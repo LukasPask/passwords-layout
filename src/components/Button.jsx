@@ -2,10 +2,10 @@ import React from 'react';
 // Style
 import { StyledButton } from '../style/Button.style';
 
-const Button = ({ text, action, paddingX, paddingY }) => {
+const Button = ({ text, action, paddingX, paddingY, textSize }) => {
   return (
     <StyledButton
-      style={{ padding: `${paddingX} ${paddingY}` }}
+      style={{ padding: `${paddingY} ${paddingX}`, fontSize: textSize }}
       onClick={action}
     >
       {text}

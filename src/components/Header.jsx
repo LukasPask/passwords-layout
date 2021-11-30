@@ -1,6 +1,7 @@
 import React from 'react';
 // Components
 import Button from './Button';
+import Image from './Image';
 // Style
 import {
   StyledHeader,
@@ -11,6 +12,8 @@ import {
   NavigationList,
   ListLink,
 } from '../style/Header.style';
+// Images
+import CompanyLogo from '../assets/logo.png';
 
 const linkData = [
   {
@@ -44,10 +47,11 @@ const Header = () => {
     <StyledHeader>
       <HeaderWrapper>
         <Logo>
-          <img
-            src='https://images-na.ssl-images-amazon.com/images/I/31HF7V4rAoL.png'
+          <Image
+            imageSource={CompanyLogo}
             alt='company logo'
-            width='35'
+            height='30px'
+            width='35px'
           />
           <LogoText>
             Nord<span>Pass</span>
@@ -56,14 +60,16 @@ const Header = () => {
         <Navigation>
           <NavigationList>
             {linkData.map(({ linkTo, title }) => (
-              <ListLink href={linkTo}>{title}</ListLink>
+              <ListLink key={title} href={linkTo}>
+                {title}
+              </ListLink>
             ))}
             <li>
               <Button
                 text='Open Vault'
                 action={() => console.log('Vault is open')}
-                paddingX='6px'
-                paddingY='15px'
+                paddingX='15px'
+                paddingY='6px'
               />
             </li>
           </NavigationList>
