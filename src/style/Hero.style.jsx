@@ -7,7 +7,7 @@ export const StyledHero = styled.section`
   margin: 0 auto;
   max-height: 700px;
   max-width: 1340px;
-  padding: 144px 0 0 0;
+  padding: 144px 0 0 70px;
 `;
 
 export const LeftSideHero = styled.div`

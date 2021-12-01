@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
   position: fixed;
   width: 100%;
+  background-color: var(--white-color);
 `;
 
 export const HeaderWrapper = styled.div`
@@ -14,7 +15,7 @@ export const HeaderWrapper = styled.div`
   background-color: var(--white-color);
   height: 64px;
   margin: 0 auto;
-  max-width: 1340px;
+  max-width: 1200px;
 `;
 
 export const Logo = styled.div`
@@ -32,7 +33,6 @@ export const LogoText = styled.p`
 
 export const Navigation = styled.nav`
   width: 50%;
-  padding-right: 100px;
 `;
 
 export const NavigationList = styled.ul`

@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // Components
 import HeroSection from '../components/HeroSection';
 import Section from '../components/Section';
 import Button from '../components/Button';
-// Logic (custom hooks)
-import useFetch from '../hooks/useFetch';
-// Style
+// Icons
+import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
+// Data
+// Data
+import { filterData, FAQData } from '../data/Data';
+
 import {
   DisplayFlex,
   StyledH6Text,
@@ -13,127 +16,104 @@ import {
   OrderedList,
   StyledListItem,
   ButtonWrapper,
+  SectionWrapper,
+  FAQSection,
+  FAQBox,
+  FAQTitle,
+  FAQContext,
 } from '../style/HomePage.style';
-// filter data
-const filterData = [
-  { name: 'aaaaa', value: 'AbbbBC' },
-  { name: 'Count', value: 'Count' },
-  { name: 'Alphabetically', value: 'ABC' },
-];
-// FAQ data
-const FAQData = [
-  {
-    title: 'Why should you use a password manager for business?',
-    context:
-      'Running a business comes with managing a lot of different devices and accounts. The easiest way to keep track of their login credentials is to use a password manager. With a password manager, your employees can store all their logins in one place, share them with coworkers, and access them on multiple devices with one password only. No excuse for forgetting passwords after a long vacation or for sharing passwords via email!',
-  },
-  {
-    title: 'How to choose the best password manager for business?',
-    context:
-      'Running a business comes with managing a lot of different devices and accounts. The easiest way to keep track of their login credentials is to use a password manager. With a password manager, your employees can store all their logins in one place, share them with coworkers, and access them on multiple devices with one password only. No excuse for forgetting passwords after a long vacation or for sharing passwords via email!',
-  },
-  {
-    title: 'How can I get a business password manager?',
-    context:
-      'Running a business comes with managing a lot of different devices and accounts. The easiest way to keep track of their login credentials is to use a password manager. With a password manager, your employees can store all their logins in one place, share them with coworkers, and access them on multiple devices with one password only. No excuse for forgetting passwords after a long vacation or for sharing passwords via email!',
-  },
-];
+import HomePageLogic from '../logic/HomePageLogic';
 
 const HomePage = () => {
-  // Custom hooks
-  const {
-    data: passwords,
-    isLoading,
-    error,
-  } = useFetch(`https://playground.nordsec.com/v2/worst-psw.json`);
-  // State
-  const [showAll, setShowAll] = useState(10);
-  const [showAllButtonText, setShowAllButtonText] = useState('Show all (50)');
-  const [sortedPassword, setSortedPassword] = useState([]);
-
-  useEffect(() => {
-    const pass = [];
-    setSortedPassword(pass);
-    console.log(pass);
-  }, []);
-  // console.log(sortedPassword);
-  const sortHandler = (e) => {
-    setSortedPassword([]);
-    if (e.target.value === 'Count') {
-      setSortedPassword(
-        passwords.passwords.sort((a, b) => {
-          return b.count - a.count;
-        })
-      );
-    } else if (e.target.value === 'ABC') {
-      setSortedPassword(
-        passwords.passwords.sort((a, b) => {
-          if (a.value.toLowerCase() < b.value.toLowerCase()) return -1;
-          if (a.value.toLowerCase() > b.value.toLowerCase()) return 1;
-          return 0;
-        })
-      );
-    }
-  };
-  console.log(sortedPassword);
-
-  const showAllPasswords = () => {
-    if (showAll === 10) {
-      setShowAllButtonText('Show less');
-      setShowAll(50);
-    }
-    if (showAll === 50) {
-      setShowAllButtonText('Show all (50)');
-      setShowAll(10);
-    }
-  };
-
   return (
-    <>
-      <HeroSection />
-      <Section headText='Top leaked passwords'>
-        <DisplayFlex>
-          <StyledH6Text>Password</StyledH6Text>
-          <StyledSelect onChange={sortHandler}>
-            {filterData.map(({ name, value }) => (
-              <option key={value} value={value}>
-                {name}
-              </option>
-            ))}
-          </StyledSelect>
-        </DisplayFlex>
-        <DisplayFlex>
-          <OrderedList>
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              sortedPassword.slice(0, showAll).map(({ value, count }) => (
-                <StyledListItem key={value}>
-                  <span>{value}</span>
-                  <span>{count}</span>
-                </StyledListItem>
-              ))
-            )}
-          </OrderedList>
-        </DisplayFlex>
-        <ButtonWrapper>
-          <Button
-            text={showAllButtonText}
-            paddingX='20px'
-            paddingY='9px'
-            action={showAllPasswords}
-          />
-        </ButtonWrapper>
-      </Section>
-      {/* <Section headText='Frequently asked questions'>
-        {FAQData.map(({ title, context }) => (
-          <div>
-            <p>{title}</p>
-            <p>{context}</p>
-          </div>
-        ))}
-      </Section> */}
-    </>
+    <HomePageLogic
+      render={(
+        //   State
+        // for controlling shown data count
+        showAll,
+        setShowAll,
+        // for controlling data count button text
+        showAllButtonText,
+        setShowAllButtonText,
+        // for sorting passwords by filter
+        sortedPassword,
+        setSortedPassword,
+        // For showing and hiding FAQ content default value is the first FAQ
+        showText,
+        setShowText,
+        // Custom functions
+        sortHandler,
+        showAllPasswords,
+        // API DATA
+        passwords,
+        isLoading,
+        error
+      ) => (
+        <>
+          <HeroSection />
+          <Section headText='Top leaked passwords'>
+            <DisplayFlex>
+              <StyledH6Text>Password</StyledH6Text>
+              <StyledSelect onChange={sortHandler}>
+                {filterData.map(({ name, value }) => (
+                  <option key={value} value={value}>
+                    {name}
+                  </option>
+                ))}
+              </StyledSelect>
+            </DisplayFlex>
+            <DisplayFlex>
+              <OrderedList>
+                {isLoading ? (
+                  <p>Loading...</p>
+                ) : error ? (
+                  <p>Error...</p>
+                ) : (
+                  sortedPassword.slice(0, showAll).map(({ value, count }) => (
+                    <StyledListItem key={value}>
+                      <span>{value}</span>
+                      <span>{count}</span>
+                    </StyledListItem>
+                  ))
+                )}
+              </OrderedList>
+            </DisplayFlex>
+            <ButtonWrapper>
+              <Button
+                text={showAllButtonText}
+                paddingX='20px'
+                paddingY='9px'
+                action={showAllPasswords}
+              />
+            </ButtonWrapper>
+          </Section>
+          <SectionWrapper>
+            <Section headText='Frequently asked questions'>
+              {FAQData.map(({ title, context1, context2 }) => (
+                <FAQSection
+                  key={title}
+                  // Checking the values of title and showText if they are equal then return null if not return new title
+                  onClick={() => setShowText(title === showText ? null : title)}
+                >
+                  <FAQBox>
+                    <FAQTitle>{title}</FAQTitle>
+                    {/* If context is shown change the icon from arrow down to arrow up  */}
+                    {showText === title ? <HiChevronUp /> : <HiChevronDown />}
+                  </FAQBox>
+                  {/* If showText and title are equal then show the context */}
+                  {showText === title && (
+                    <>
+                      <FAQContext>{context1}</FAQContext>
+                      <FAQContext>{context2}</FAQContext>
+                    </>
+                  )}
+                </FAQSection>
+              ))}
+            </Section>
+          </SectionWrapper>
+        </>
+      )}
+    />
   );
 };
 

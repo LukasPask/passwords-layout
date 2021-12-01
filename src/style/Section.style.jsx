@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledSection = styled.section`
   margin: 0 auto;
-  max-width: 1340px;
+  max-width: 1200px;
 `;
 
 export const SectionHeadText = styled.h3`
