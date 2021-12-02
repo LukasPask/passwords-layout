@@ -1,0 +1,118 @@
+@use 'base';
+// Dekstop first
+// Header
+.header {
+  background-color: base.$grey-color;
+  position: fixed;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    margin: auto;
+    max-width: 1200px;
+    @media screen and (max-width: 1200px) {
+      padding: 0 50px;
+    }
+  }
+}
+
+// Logo
+.logo {
+  @extend %d-flex-center;
+  &__image {
+    height: 27px;
+    width: 34px;
+  }
+  &__text {
+    @extend %small-font-size;
+    font-weight: 600;
+    padding-left: 0.5rem;
+    &--green {
+      color: base.$primary-color;
+    }
+  }
+}
+
+// Navigation
+.nav {
+  width: 50%;
+  @extend %small-font-size;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    background-color: base.$grey-color;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 2rem;
+    z-index: 1;
+  }
+  &__list {
+    @extend %d-flex-space-between;
+    list-style: none;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    @media screen and (max-width: 900px) {
+      padding: 0.5rem;
+    }
+  }
+  &__link {
+    @extend %small-font-size;
+    color: base.$black-color;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+    &:hover {
+      color: base.$primary-color;
+    }
+  }
+  &__toggler {
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
+
+// Menu toggler animation and style
+.hamburger {
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
+}
+.hamburger .hamburger__line {
+  width: 1.563rem;
+  height: 0.156rem;
+  background-color: base.$secondary-color;
+  display: block;
+  margin: 0.25rem auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.is-active .hamburger__line:nth-child(2) {
+  opacity: 0;
+}
+
+.is-active .hamburger__line:nth-child(1) {
+  -webkit-transform: translateY(0.406rem) rotate(45deg);
+  -ms-transform: translateY(0.406rem) rotate(45deg);
+  -o-transform: translateY(0.406rem) rotate(45deg);
+  transform: translateY(0.406rem) rotate(45deg);
+}
+
+.is-active .hamburger__line:nth-child(3) {
+  -webkit-transform: translateY(-0.406rem) rotate(-45deg);
+  -ms-transform: translateY(-0.406rem) rotate(-45deg);
+  -o-transform: translateY(-0.406rem) rotate(-45deg);
+  transform: translateY(-0.406rem) rotate(-45deg);
+}

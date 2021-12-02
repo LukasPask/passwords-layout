@@ -1,81 +1,67 @@
 import React from 'react';
 // Components
 import Button from './Button';
-import Image from './Image';
 // Style
-import {
-  StyledHeader,
-  HeaderWrapper,
-  Logo,
-  LogoText,
-  Navigation,
-  NavigationList,
-  ListLink,
-} from '../style/Header.style';
+import '../style/Header.scss';
+// Logic
+import HeaderLogic from '../logic/HeaderLogic';
 // Images
 import CompanyLogo from '../assets/logo.png';
-
-const linkData = [
-  {
-    title: 'Features',
-    linkTo: '/',
-  },
-  {
-    title: 'Pricing',
-    linkTo: '/',
-  },
-  {
-    title: 'Apps',
-    linkTo: '/',
-  },
-  {
-    title: 'Blog',
-    linkTo: '/',
-  },
-  {
-    title: 'Help',
-    linkTo: '/',
-  },
-  {
-    title: 'My Account',
-    linkTo: '/',
-  },
-];
+// Navigation data
+import { linkData } from '../data/Data';
 
 const Header = () => {
+  console.log(window.outerWidth);
   return (
-    <StyledHeader>
-      <HeaderWrapper>
-        <Logo>
-          <Image
-            imageSource={CompanyLogo}
-            alt='company logo'
-            height='30px'
-            width='35px'
-          />
-          <LogoText>
-            Nord<span>Pass</span>
-          </LogoText>
-        </Logo>
-        <Navigation>
-          <NavigationList>
-            {linkData.map(({ linkTo, title }) => (
-              <ListLink key={title} href={linkTo}>
-                {title}
-              </ListLink>
-            ))}
-            <li>
-              <Button
-                text='Open Vault'
-                action={() => console.log('Vault is open')}
-                paddingX='15px'
-                paddingY='6px'
+    <HeaderLogic
+      render={(
+        //   State
+        isActive,
+        isOpen,
+        height,
+        // Functions
+        toggleNavigation
+      ) => (
+        <header className='header'>
+          <div className='header__wrapper'>
+            <div className='logo'>
+              <img
+                className='logo__image'
+                src={CompanyLogo}
+                alt='company logo'
               />
-            </li>
-          </NavigationList>
-        </Navigation>
-      </HeaderWrapper>
-    </StyledHeader>
+              <p className='logo__text'>
+                Nord<span className='logo__text--green'>Pass</span>
+              </p>
+            </div>
+            <nav className='nav' style={{ display: isOpen, height: height }}>
+              <ul className='nav__list'>
+                {linkData.map(({ linkTo, title }) => (
+                  <li className='nav__item' key={title}>
+                    <a className='nav__link' href={linkTo}>
+                      {title}
+                    </a>
+                  </li>
+                ))}
+                <li className='nav__item'>
+                  <Button
+                    text='Open Vault'
+                    action={() => console.log('Vault is open')}
+                    paddingX='0.938rem'
+                    paddingY='0.375rem'
+                  />
+                </li>
+              </ul>
+            </nav>
+            <div onClick={toggleNavigation} className={`hamburger ${isActive}`}>
+              <span className='hamburger__line'></span>
+              <span className='hamburger__line'></span>
+              <span className='hamburger__line'></span>
+            </div>
+          </div>
+        </header>
+      )}
+    />
   );
 };
 

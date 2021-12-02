@@ -6,22 +6,10 @@ import Button from '../components/Button';
 // Icons
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 // Data
-// Data
 import { filterData, FAQData } from '../data/Data';
-
-import {
-  DisplayFlex,
-  StyledH6Text,
-  StyledSelect,
-  OrderedList,
-  StyledListItem,
-  ButtonWrapper,
-  SectionWrapper,
-  FAQSection,
-  FAQBox,
-  FAQTitle,
-  FAQContext,
-} from '../style/HomePage.style';
+// Style
+import '../style/HomePage.scss';
+// Logic
 import HomePageLogic from '../logic/HomePageLogic';
 
 const HomePage = () => {
@@ -52,65 +40,76 @@ const HomePage = () => {
         <>
           <HeroSection />
           <Section headText='Top leaked passwords'>
-            <DisplayFlex>
-              <StyledH6Text>Password</StyledH6Text>
-              <StyledSelect onChange={sortHandler}>
+            <div className='passwordsFilter'>
+              <h6 className='passwordsFilter__name'>Password</h6>
+              <select
+                className='passwordsFilter__select'
+                onChange={sortHandler}
+              >
                 {filterData.map(({ name, value }) => (
-                  <option key={value} value={value}>
+                  <option
+                    className='passwordsFilter__option'
+                    key={value}
+                    value={value}
+                  >
                     {name}
                   </option>
                 ))}
-              </StyledSelect>
-            </DisplayFlex>
-            <DisplayFlex>
-              <OrderedList>
-                {isLoading ? (
-                  <p>Loading...</p>
-                ) : error ? (
-                  <p>Error...</p>
-                ) : (
-                  sortedPassword.slice(0, showAll).map(({ value, count }) => (
-                    <StyledListItem key={value}>
-                      <span>{value}</span>
-                      <span>{count}</span>
-                    </StyledListItem>
-                  ))
-                )}
-              </OrderedList>
-            </DisplayFlex>
-            <ButtonWrapper>
+              </select>
+            </div>
+            <div className='password'>
+              {isLoading ? (
+                <p className='password__text'>Loading...</p>
+              ) : error ? (
+                <p className='password__text'>Error...</p>
+              ) : (
+                sortedPassword.slice(0, showAll).map(({ value, count }) => (
+                  <div className='password__box' key={value}>
+                    <span className='password__value'>{value}</span>
+                    <span className='password__count'>{count}</span>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className='password__buttonWrapper'>
               <Button
                 text={showAllButtonText}
-                paddingX='20px'
-                paddingY='9px'
+                paddingX='1.25rem'
+                paddingY='0.563rem'
                 action={showAllPasswords}
               />
-            </ButtonWrapper>
+            </div>
           </Section>
-          <SectionWrapper>
+          <div className='questions'>
             <Section headText='Frequently asked questions'>
               {FAQData.map(({ title, context1, context2 }) => (
-                <FAQSection
+                <div
+                  className='questions__box'
                   key={title}
                   // Checking the values of title and showText if they are equal then return null if not return new title
-                  onClick={() => setShowText(title === showText ? null : title)}
                 >
-                  <FAQBox>
-                    <FAQTitle>{title}</FAQTitle>
+                  <div
+                    className='questions__titleBox'
+                    onClick={() =>
+                      setShowText(title === showText ? null : title)
+                    }
+                  >
+                    <p>{title}</p>
                     {/* If context is shown change the icon from arrow down to arrow up  */}
                     {showText === title ? <HiChevronUp /> : <HiChevronDown />}
-                  </FAQBox>
+                  </div>
                   {/* If showText and title are equal then show the context */}
                   {showText === title && (
-                    <>
-                      <FAQContext>{context1}</FAQContext>
-                      <FAQContext>{context2}</FAQContext>
-                    </>
+                    <div className='questions__contextBox'>
+                      <p className='questions__context'>{context1}</p>
+                      <p className='questions__context'>{context2}</p>
+                    </div>
                   )}
-                </FAQSection>
+                </div>
               ))}
             </Section>
-          </SectionWrapper>
+          </div>
         </>
       )}
     />

@@ -1,0 +1,23 @@
+@use 'base';
+// Dekstop first
+.footer {
+  width: 100%;
+  background-color: base.$white-color;
+  @media screen and (max-width: 1200px) {
+    padding: 0 50px;
+  }
+  &__wrapper {
+    @extend %d-flex-bottom, %m-center;
+    max-width: 1200px;
+    padding: 4.5rem 0;
+  }
+  &__text {
+    @extend %smaller-font-size;
+    color: base.$secondary-color;
+    padding: 0.938rem 0 0 0;
+    &--grey {
+      @extend %smaller-font-size;
+      color: #b9babd;
+    }
+  }
+}

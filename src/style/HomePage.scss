@@ -1,0 +1,116 @@
+@use 'base';
+// Dekstop first
+.passwordsFilter {
+  @extend %d-flex-space-between;
+  padding-bottom: 1.5rem;
+  &__name {
+    @extend %medium-font-size;
+    color: base.$secondary-color;
+    line-height: 1.875rem;
+  }
+  &__select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/60/60995.png');
+    background-position: 90%;
+    background-size: 0.5rem;
+    background-repeat: no-repeat;
+    background-color: base.$white-color;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    width: 15%;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (max-width: 900px) {
+      width: 20%;
+    }
+    @media screen and (max-width: 768px) {
+      width: 8rem;
+    }
+  }
+}
+
+.password {
+  @extend %d-flex-collumn;
+  max-width: 1200px;
+  counter-reset: section;
+  &__box {
+    @extend %d-flex-left;
+    border-top: 1px solid #e8e8e9;
+    padding: 1.5rem 0 1.5rem 0;
+    &::before {
+      counter-increment: section;
+      content: counter(section) '.  ';
+    }
+    &:last-child {
+      border-bottom: 1px solid #e8e8e9;
+    }
+  }
+  &__value {
+    padding-left: 1.75rem;
+    font-weight: 700;
+  }
+  &__count {
+    margin-left: auto;
+  }
+  &__buttonWrapper {
+    padding: 3.125rem 0 0 0;
+    text-align: center;
+    padding-bottom: 6rem;
+  }
+}
+
+.questions {
+  background-color: #f8f8f8;
+  padding-bottom: 6rem;
+  width: 100%;
+  &__box {
+    background-color: base.$white-color;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.15);
+    padding: 1.25rem;
+    margin: 0.938rem auto;
+    width: 50%;
+    @media screen and (max-width: 1200px) {
+      width: 60%;
+    }
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 568px) {
+      width: 90%;
+    }
+  }
+  &__titleBox {
+    @extend %d-flex-space-between;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__title {
+    color: base.$secondary-color;
+    font-weight: 700;
+    line-height: 1.5rem;
+  }
+  &__contextBox {
+    animation: fadein 0.5s;
+    transition: all 1s ease-out;
+    overflow: hidden;
+
+    @keyframes fadein {
+      from {
+        height: 0;
+      }
+      to {
+        height: 232px;
+      }
+    }
+  }
+  &__context {
+    color: var(--secondary-color);
+    line-height: 1.5rem;
+    padding: 1rem 0;
+  }
+}

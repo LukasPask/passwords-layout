@@ -1,0 +1,15 @@
+@use 'base';
+// Dekstop first
+.button {
+  background-color: base.$primary-color;
+  border: none;
+  border-radius: 3px;
+  color: base.$white-color;
+  font-weight: 700;
+  font-size: 0.75rem;
+  transition: 0.3s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}

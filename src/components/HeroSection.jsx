@@ -1,28 +1,29 @@
 import React from 'react';
 // Components
 import Button from './Button';
-import Image from './Image';
 // Style
-import { StyledHero, LeftSideHero, HeroText } from '../style/Hero.style';
+import '../style/Hero.scss';
 // Assets
 import HeroImage from '../assets/np-hero-image.png';
 
 const Hero = () => {
   return (
-    <StyledHero>
-      <LeftSideHero>
-        <HeroText>Get your passwords organized</HeroText>
-        <Button
-          text='Get started'
-          paddingX='24px'
-          paddingY='12px'
-          textSize='20px'
-        />
-      </LeftSideHero>
-      <div>
-        <Image imageSource={HeroImage} height='500px' width='750px' />
+    <section className='hero'>
+      <div className='hero__wrapper'>
+        <div className='hero__left'>
+          <h1 className='hero__text'>Get your passwords organized</h1>
+          <Button
+            text='Get started'
+            paddingX='1.5rem'
+            paddingY='0.75rem'
+            textSize='1.25rem'
+          />
+        </div>
+        <div className='hero__right'>
+          <img src={HeroImage} alt='pc' className='hero__image' />
+        </div>
       </div>
-    </StyledHero>
+    </section>
   );
 };
 

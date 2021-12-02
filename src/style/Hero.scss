@@ -1,0 +1,38 @@
+@use 'base';
+// Dekstop first
+.hero {
+  background: linear-gradient(180deg, base.$grey-color 0%, #ffffff 99.84%);
+
+  &__wrapper {
+    @extend %d-flex-space-between, %m-center;
+    max-width: 1340px;
+    padding: 9rem 0 0 4.375rem;
+    @media screen and (max-width: 1200px) {
+      padding: 9rem 3.125rem 3.125rem 4.375rem;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 6rem 3rem 3rem 3rem;
+      flex-direction: column;
+    }
+  }
+  &__left {
+    @extend %d-flex-collumn-left;
+    padding-bottom: 6.25rem;
+    @media screen and (max-width: 768px) {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  &__text {
+    @extend %largest-font-size;
+    font-weight: 700;
+    line-height: 4rem;
+    padding: 3rem 0;
+  }
+
+  &__image {
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+}

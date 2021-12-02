@@ -1,13 +1,13 @@
 import React from 'react';
 // Style
-import { StyledSection, SectionHeadText } from '../style/Section.style';
+import '../style/Section.scss';
 
 const Section = ({ headText, children }) => {
   return (
-    <StyledSection>
-      <SectionHeadText>{headText}</SectionHeadText>
-      <div>{children}</div>
-    </StyledSection>
+    <section className='section'>
+      <h3 className='section__text'>{headText}</h3>
+      <div className='section__children'>{children}</div>
+    </section>
   );
 };
 

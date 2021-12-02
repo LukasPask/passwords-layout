@@ -1,3 +1,30 @@
+// Navigation data
+export const linkData = [
+  {
+    title: 'Features',
+    linkTo: '/',
+  },
+  {
+    title: 'Pricing',
+    linkTo: '/',
+  },
+  {
+    title: 'Apps',
+    linkTo: '/',
+  },
+  {
+    title: 'Blog',
+    linkTo: '/',
+  },
+  {
+    title: 'Help',
+    linkTo: '/',
+  },
+  {
+    title: 'My Account',
+    linkTo: '/',
+  },
+];
 // filter data
 export const filterData = [
   { name: 'Count', value: 'Count' },

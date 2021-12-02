@@ -1,15 +1,16 @@
 import React from 'react';
 // Style
-import { StyledButton } from '../style/Button.style';
+import '../style/Button.scss';
 
 const Button = ({ text, action, paddingX, paddingY, textSize }) => {
   return (
-    <StyledButton
+    <button
+      className='button'
       style={{ padding: `${paddingY} ${paddingX}`, fontSize: textSize }}
       onClick={action}
     >
       {text}
-    </StyledButton>
+    </button>
   );
 };
 

@@ -1,0 +1,96 @@
+/* Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+
+$primary-color: #43a5a1;
+$secondary-color: #373b42;
+$grey-color: #edf8f7;
+$black-color: #000;
+$white-color: #fff;
+
+// Local libary
+
+// Margin / padding
+%m-center {
+  margin: 0 auto;
+}
+
+// Display flex
+%d-flex {
+  display: flex;
+}
+
+%d-flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+%d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%d-flex-left {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+%d-flex-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+%d-flex-collumn {
+  display: flex;
+  flex-direction: column;
+}
+
+%d-flex-collumn-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%d-flex-collumn-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+// Font sizes
+
+%smaller-font-size {
+  font-size: 0.75rem;
+}
+
+%small-font-size {
+  font-size: 0.875rem;
+  @media screen and (max-width: 900px) {
+    font-size: 1.25rem;
+  }
+}
+
+%medium-font-size {
+  font-size: 1.25rem;
+}
+
+%large-font-size {
+  font-size: 2.5rem;
+  @media screen and (max-width: 1200px) {
+    font-size: 2rem;
+  }
+}
+
+%largest-font-size {
+  font-size: 3rem;
+  @media screen and (max-width: 1200px) {
+    font-size: 2.5rem;
+  }
+}

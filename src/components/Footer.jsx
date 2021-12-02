@@ -1,21 +1,21 @@
 import React from 'react';
 // Style
-import { StyledFooter, FooterWrapper, FooterText } from '../style/Footer.style';
+import '../style/Footer.scss';
 
 const Footer = () => {
   return (
-    <StyledFooter>
-      <FooterWrapper>
-        <div>
-          <FooterText>ENGAGE</FooterText>
-          <FooterText>Privacy Policy</FooterText>
-          <FooterText>Terms of Service</FooterText>
+    <footer className='footer'>
+      <div className='footer__wrapper'>
+        <div className='footer__left'>
+          <p className='footer__text--grey'>ENGAGE</p>
+          <p className='footer__text'>Privacy Policy</p>
+          <p className='footer__text'>Terms of Service</p>
         </div>
-        <FooterText>
+        <p className='footer__text'>
           Copyright &copy; {new Date().getFullYear()} NordPass.com
-        </FooterText>
-      </FooterWrapper>
-    </StyledFooter>
+        </p>
+      </div>
+    </footer>
   );
 };
 
