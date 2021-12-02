@@ -1,14 +1,13 @@
 import React from 'react';
 // Components
-import Button from './Button';
+import NavBar from './NavBar';
 // Style
 import '../style/Header.scss';
 // Logic
 import HeaderLogic from '../logic/HeaderLogic';
 // Images
 import CompanyLogo from '../assets/logo.png';
-// Navigation data
-import { linkData } from '../data/Data';
+import Modal from './Modal';
 
 const Header = () => {
   console.log(window.outerWidth);
@@ -18,7 +17,6 @@ const Header = () => {
         //   State
         isActive,
         isOpen,
-        height,
         // Functions
         toggleNavigation
       ) => (
@@ -34,31 +32,20 @@ const Header = () => {
                 Nord<span className='logo__text--green'>Pass</span>
               </p>
             </div>
-            <nav className='nav' style={{ display: isOpen, height: height }}>
-              <ul className='nav__list'>
-                {linkData.map(({ linkTo, title }) => (
-                  <li className='nav__item' key={title}>
-                    <a className='nav__link' href={linkTo}>
-                      {title}
-                    </a>
-                  </li>
-                ))}
-                <li className='nav__item'>
-                  <Button
-                    text='Open Vault'
-                    action={() => console.log('Vault is open')}
-                    paddingX='0.938rem'
-                    paddingY='0.375rem'
-                  />
-                </li>
-              </ul>
-            </nav>
+            <div className='navigation__wrapper'>
+              <NavBar />
+            </div>
             <div onClick={toggleNavigation} className={`hamburger ${isActive}`}>
               <span className='hamburger__line'></span>
               <span className='hamburger__line'></span>
               <span className='hamburger__line'></span>
             </div>
           </div>
+          {isOpen && (
+            <Modal onClose={toggleNavigation}>
+              <NavBar />
+            </Modal>
+          )}
         </header>
       )}
     />

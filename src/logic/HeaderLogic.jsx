@@ -6,19 +6,16 @@ const HeaderLogic = ({ render }) => {
   // For Hamburger animation
   const [isActive, setIsActive] = useState('');
   // For toggling navigation in tablet mode
-  const [isOpen, setIsOpen] = useState('none');
-  const [height, setHeight] = useState('0px');
+  const [isOpen, setIsOpen] = useState(false);
 
   // Custom functions
   const toggleNavigation = () => {
     if (!isActive) {
       setIsActive('is-active');
-      setIsOpen('block');
-      setHeight('auto');
+      setIsOpen(true);
     } else if (isActive === 'is-active') {
       setIsActive('');
-      setIsOpen('none');
-      setHeight('0px');
+      setIsOpen(false);
     }
   };
 
@@ -26,7 +23,7 @@ const HeaderLogic = ({ render }) => {
     //   State
     isActive,
     isOpen,
-    height,
+
     // Functions
     toggleNavigation
   );
