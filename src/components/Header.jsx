@@ -10,7 +10,6 @@ import CompanyLogo from '../assets/logo.png';
 import Modal from './Modal';
 
 const Header = () => {
-  console.log(window.outerWidth);
   return (
     <HeaderLogic
       render={(

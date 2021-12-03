@@ -4,7 +4,7 @@ import HeroSection from '../components/HeroSection';
 import Section from '../components/Section';
 import Button from '../components/Button';
 // Icons
-import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
+import { HiChevronDown } from 'react-icons/hi';
 // Data
 import { filterData, FAQData } from '../data/Data';
 // Style
@@ -71,7 +71,6 @@ const HomePage = () => {
                 ))
               )}
             </div>
-
             <div className='password__buttonWrapper'>
               <Button
                 text={showAllButtonText}
@@ -83,29 +82,23 @@ const HomePage = () => {
           </Section>
           <div className='questions'>
             <Section headText='Frequently asked questions'>
-              {FAQData.map(({ title, context1, context2 }) => (
-                <div
-                  className='questions__box'
-                  key={title}
-                  // Checking the values of title and showText if they are equal then return null if not return new title
-                >
-                  <div
-                    className='questions__titleBox'
-                    onClick={() =>
-                      setShowText(title === showText ? null : title)
-                    }
-                  >
-                    <p>{title}</p>
-                    {/* If context is shown change the icon from arrow down to arrow up  */}
-                    {showText === title ? <HiChevronUp /> : <HiChevronDown />}
+              {FAQData.map(({ id, title, context1, context2 }) => (
+                <div className='accordion' key={id}>
+                  <input
+                    id={id}
+                    type='radio'
+                    className='accordion__toggle'
+                    name='toggle'
+                  />
+
+                  <label className='accordion__title' htmlFor={id}>
+                    {title}
+                    <HiChevronDown />
+                  </label>
+                  <div className='accordion__contextBox'>
+                    <p className='accordion__context'>{context1}</p>
+                    <p className='accordion__context'>{context2}</p>
                   </div>
-                  {/* If showText and title are equal then show the context */}
-                  {showText === title && (
-                    <div className='questions__contextBox'>
-                      <p className='questions__context'>{context1}</p>
-                      <p className='questions__context'>{context2}</p>
-                    </div>
-                  )}
                 </div>
               ))}
             </Section>

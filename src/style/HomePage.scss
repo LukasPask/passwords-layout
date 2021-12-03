@@ -61,56 +61,57 @@
     padding-bottom: 6rem;
   }
 }
-
 .questions {
   background-color: #f8f8f8;
   padding-bottom: 6rem;
-  width: 100%;
-  &__box {
-    background-color: base.$white-color;
-    border-radius: 3px;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.15);
-    padding: 1.25rem;
-    margin: 0.938rem auto;
-    width: 50%;
-    @media screen and (max-width: 1200px) {
-      width: 60%;
-    }
-    @media screen and (max-width: 768px) {
-      width: 80%;
-    }
-    @media screen and (max-width: 568px) {
-      width: 90%;
-    }
-  }
-  &__titleBox {
-    @extend %d-flex-space-between;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  &__title {
-    color: base.$secondary-color;
-    font-weight: 700;
-    line-height: 1.5rem;
-  }
-  &__contextBox {
-    animation: fadein 0.5s;
-    transition: all 1s ease-out;
-    overflow: hidden;
+}
 
-    @keyframes fadein {
-      from {
-        height: 0;
-      }
-      to {
-        height: 232px;
-      }
-    }
+.accordion {
+  background-color: base.$white-color;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin: 0.5rem auto;
+  transform: translateZ(0);
+  width: 62%;
+  // Toggler
+  & > &__toggle {
+    display: none;
   }
-  &__context {
-    color: var(--secondary-color);
+
+  &__toggle:checked ~ &__contextBox {
+    height: 9.5rem;
+  }
+  &__toggle:checked ~ &__title svg {
+    transform: rotate(180deg);
+  }
+
+  &__title svg {
+    font-size: 1.3rem;
+  }
+
+  // Label
+  &__title {
+    @extend %d-flex-space-between;
+    color: base.$secondary-color;
+    position: relative;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 1rem;
+  }
+
+  // Context box
+  & > &__contextBox {
+    height: 0;
+    transition: 0.3s all;
+    overflow: hidden;
+  }
+
+  & > &__contextBox &__context {
+    color: base.$secondary-color;
+    font-size: 1rem;
+    padding: 0 1rem 0 1rem;
+    margin-bottom: 1rem;
     line-height: 1.5rem;
-    padding: 1rem 0;
   }
 }
