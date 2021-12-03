@@ -7,9 +7,15 @@ const Footer = () => {
     <footer className='footer'>
       <div className='footer__wrapper'>
         <div className='footer__left'>
-          <p className='footer__text--grey'>ENGAGE</p>
-          <p className='footer__text'>Privacy Policy</p>
-          <p className='footer__text'>Terms of Service</p>
+          <a href='/' className='footer__text--grey'>
+            ENGAGE
+          </a>
+          <a href='/' className='footer__text'>
+            Privacy Policy
+          </a>
+          <a href='/' className='footer__text'>
+            Terms of Service
+          </a>
         </div>
         <p className='footer__text'>
           Copyright &copy; {new Date().getFullYear()} NordPass.com

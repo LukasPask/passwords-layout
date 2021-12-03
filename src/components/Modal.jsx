@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 // Style
@@ -25,6 +26,11 @@ const Modal = ({ children, onClose }) => {
     </div>,
     document.getElementById('portal')
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

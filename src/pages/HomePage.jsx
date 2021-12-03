@@ -2,6 +2,7 @@ import React from 'react';
 // Components
 import HeroSection from '../components/HeroSection';
 import Section from '../components/Section';
+import FAQSection from '../components/FAQSection';
 import Button from '../components/Button';
 // Icons
 import { HiChevronDown } from 'react-icons/hi';
@@ -79,29 +80,11 @@ const HomePage = () => {
               />
             </div>
           </Section>
-          <div className='questions'>
-            <Section headText='Frequently asked questions'>
-              {FAQData.map(({ id, title, context1, context2 }) => (
-                <div className='accordion' key={id}>
-                  <input
-                    id={id}
-                    type='radio'
-                    className='accordion__toggle'
-                    name='toggle'
-                  />
-
-                  <label className='accordion__title' htmlFor={id}>
-                    {title}
-                    <HiChevronDown />
-                  </label>
-                  <div className='accordion__contextBox'>
-                    <p className='accordion__context'>{context1}</p>
-                    <p className='accordion__context'>{context2}</p>
-                  </div>
-                </div>
-              ))}
-            </Section>
-          </div>
+          <FAQSection
+            headText='Frequently asked questions'
+            data={FAQData}
+            icon={<HiChevronDown />}
+          />
         </>
       )}
     />

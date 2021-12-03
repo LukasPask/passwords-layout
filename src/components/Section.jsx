@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 // Style
 import '../style/Section.scss';
@@ -9,6 +10,14 @@ const Section = ({ headText, children }) => {
       <div className='section__children'>{children}</div>
     </section>
   );
+};
+Section.propTypes = {
+  headText: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+Section.defaultProps = {
+  headText: 'New section',
 };
 
 export default Section;

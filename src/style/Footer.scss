@@ -19,15 +19,22 @@
       padding: 2rem 0;
     }
   }
+  // Footer left side
+  &__left {
+    display: flex;
+    flex-direction: column;
+  }
   // Footer texts
   &__text {
-    @extend %smaller-font-size;
     color: base.$secondary-color;
     padding: 0.938rem 0 0 0;
+    text-decoration: none;
+    @extend %smaller-font-size;
     // Footer text with modifier grey will be different color
     &--grey {
       @extend %smaller-font-size;
       color: #b9babd;
+      text-decoration: none;
     }
   }
 }
