@@ -1,12 +1,13 @@
 @use 'base';
 // Dekstop first
+// Section
 .section {
   @extend %m-center;
   max-width: 1200px;
   @media screen and (max-width: 1200px) {
     padding: 0 50px;
   }
-
+  // Sections head text
   &__text {
     @extend %large-font-size;
     color: base.$secondary-color;
@@ -14,5 +15,8 @@
     line-height: 3.313rem;
     text-align: center;
     padding: 3.125rem;
+    @media screen and (max-width: 568px) {
+      padding: 1.5rem 0;
+    }
   }
 }

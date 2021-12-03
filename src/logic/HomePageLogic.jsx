@@ -72,6 +72,8 @@ const HomePageLogic = ({ render }) => {
     if (showAll === 50) {
       setShowAllButtonText('Show all (50)');
       setShowAll(10);
+      // If the user wants to see less passwords then scroll to passwords (user would be scrolled back where he left (if not used after pressing user will see FAQ section))
+      window.scrollTo(0, 700);
     }
   };
 

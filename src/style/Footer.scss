@@ -1,20 +1,30 @@
 @use 'base';
 // Dekstop first
+// Footer
 .footer {
   width: 100%;
   background-color: base.$white-color;
   @media screen and (max-width: 1200px) {
     padding: 0 50px;
   }
+  // Footer wrapper
   &__wrapper {
     @extend %d-flex-bottom, %m-center;
     max-width: 1200px;
     padding: 4.5rem 0;
+    @media screen and (max-width: 568px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 0;
+    }
   }
+  // Footer texts
   &__text {
     @extend %smaller-font-size;
     color: base.$secondary-color;
     padding: 0.938rem 0 0 0;
+    // Footer text with modifier grey will be different color
     &--grey {
       @extend %smaller-font-size;
       color: #b9babd;

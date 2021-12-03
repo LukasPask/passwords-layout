@@ -1,4 +1,5 @@
 @use 'base';
+// Dekstop first
 // Navigation
 .nav {
   @extend %small-font-size;
@@ -7,16 +8,10 @@
     padding: 2rem;
     width: 100%;
     overflow: hidden;
-    animation: fadeRight 1s;
-    @keyframes fadeRight {
-      from {
-        height: 0;
-      }
-      to {
-        height: 348px;
-      }
-    }
+    // Navigation animation (used when window is smaller than 900xp)
+    animation: fadeIn 0.3s;
   }
+  // Navigation list of links
   &__list {
     @extend %d-flex-space-between;
     list-style: none;
@@ -24,11 +19,13 @@
       flex-direction: column;
     }
   }
+  // Single navigation list item
   &__item {
     @media screen and (max-width: 900px) {
       padding: 0.5rem;
     }
   }
+  // Navigation link item
   &__link {
     @extend %small-font-size;
     color: base.$black-color;
@@ -38,10 +35,5 @@
     &:hover {
       color: base.$primary-color;
     }
-  }
-  &__toggler {
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    font-size: 1.5rem;
   }
 }

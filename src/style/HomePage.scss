@@ -1,13 +1,17 @@
 @use 'base';
 // Dekstop first
+// Passwords section
+// Password text and filter
 .passwordsFilter {
   @extend %d-flex-space-between;
   padding-bottom: 1.5rem;
+  // Password text
   &__name {
     @extend %medium-font-size;
     color: base.$secondary-color;
     line-height: 1.875rem;
   }
+  // Select input
   &__select {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -29,13 +33,17 @@
     @media screen and (max-width: 768px) {
       width: 8rem;
     }
+    @media screen and (max-width: 568px) {
+      width: 7.5rem;
+    }
   }
 }
-
+// Password list
 .password {
   @extend %d-flex-collumn;
   max-width: 1200px;
   counter-reset: section;
+  // Single password with count
   &__box {
     @extend %d-flex-left;
     border-top: 1px solid #e8e8e9;
@@ -48,24 +56,33 @@
       border-bottom: 1px solid #e8e8e9;
     }
   }
+  // Password
   &__value {
     padding-left: 1.75rem;
     font-weight: 700;
   }
+  // Password count
   &__count {
     margin-left: auto;
   }
+  // Button (show more (50) show less) wrapper
   &__buttonWrapper {
     padding: 3.125rem 0 0 0;
     text-align: center;
     padding-bottom: 6rem;
+    @media screen and (max-width: 768px) {
+      padding: 2rem 0;
+    }
   }
 }
+
+// FAQ section
+// Section
 .questions {
   background-color: #f8f8f8;
   padding-bottom: 6rem;
 }
-
+// The questions accordion
 .accordion {
   background-color: base.$white-color;
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.15);
@@ -74,23 +91,27 @@
   margin: 0.5rem auto;
   transform: translateZ(0);
   width: 62%;
+  @media screen and (max-width: 768px) {
+    width: 98%;
+  }
   // Toggler
   & > &__toggle {
     display: none;
   }
-
+  // If the input is checked then content box will be showed
   &__toggle:checked ~ &__contextBox {
-    height: 9.5rem;
+    height: 12.5rem;
   }
+  // If input is checked then the icon will be rotated
   &__toggle:checked ~ &__title svg {
     transform: rotate(180deg);
   }
-
+  // Icon
   &__title svg {
     font-size: 1.3rem;
   }
 
-  // Label
+  // Question (label)
   &__title {
     @extend %d-flex-space-between;
     color: base.$secondary-color;
@@ -105,8 +126,9 @@
     height: 0;
     transition: 0.3s all;
     overflow: hidden;
+    width: 85%;
   }
-
+  // ContextBox and context
   & > &__contextBox &__context {
     color: base.$secondary-color;
     font-size: 1rem;

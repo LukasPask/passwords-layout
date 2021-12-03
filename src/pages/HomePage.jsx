@@ -74,9 +74,8 @@ const HomePage = () => {
             <div className='password__buttonWrapper'>
               <Button
                 text={showAllButtonText}
-                paddingX='1.25rem'
-                paddingY='0.563rem'
                 action={showAllPasswords}
+                size='small-btn'
               />
             </div>
           </Section>

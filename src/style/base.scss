@@ -13,11 +13,26 @@ $grey-color: #edf8f7;
 $black-color: #000;
 $white-color: #fff;
 
+// Animations
+@keyframes fadeIn {
+  from {
+    height: 0;
+  }
+  to {
+    height: 21.75rem;
+  }
+}
+
 // Local libary
 
 // Margin / padding
 %m-center {
   margin: 0 auto;
+}
+
+// Buttons
+%small-btn {
+  padding: 0.563rem 1.25rem;
 }
 
 // Display flex

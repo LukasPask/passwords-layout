@@ -12,12 +12,7 @@ const Hero = () => {
       <div className='hero__wrapper'>
         <div className='hero__left'>
           <h1 className='hero__text'>Get your passwords organized</h1>
-          <Button
-            text='Get started'
-            paddingX='1.5rem'
-            paddingY='0.75rem'
-            textSize='1.25rem'
-          />
+          <Button text='Get started' textSize='1.25rem' size='medium-btn' />
         </div>
         <div className='hero__right'>
           <img src={HeroImage} alt='pc' className='hero__image' />

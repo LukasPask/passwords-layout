@@ -1,6 +1,8 @@
 @use 'base';
-
+// Dekstop first
+// Modal
 .modal {
+  // If the screen is bigger than 900px modal will be hidden (in case of screen change)
   @media screen and (min-width: 900px) {
     display: none;
   }
@@ -10,6 +12,7 @@
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  // Modal wrapper
   &__wrapper {
     @extend %d-flex-center;
     position: fixed;
@@ -18,6 +21,7 @@
     bottom: 0;
     left: 0;
   }
+  // Modal children wrapper (position of children)
   &__childrenWrapper {
     position: fixed;
     right: 0;

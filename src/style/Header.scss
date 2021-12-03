@@ -5,7 +5,7 @@
   background-color: base.$grey-color;
   position: fixed;
   width: 100%;
-
+  z-index: 1;
   &__wrapper {
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@
   }
 }
 
-// Menu toggler animation and style
+// Menu toggler animation and style for smaller screen (<900px)
 .hamburger {
   @media screen and (min-width: 900px) {
     display: none;

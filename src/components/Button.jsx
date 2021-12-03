@@ -2,13 +2,9 @@ import React from 'react';
 // Style
 import '../style/Button.scss';
 
-const Button = ({ text, action, paddingX, paddingY, textSize }) => {
+const Button = ({ text, action, size, textSize }) => {
   return (
-    <button
-      className='button'
-      style={{ padding: `${paddingY} ${paddingX}`, fontSize: textSize }}
-      onClick={action}
-    >
+    <button style={{ fontSize: textSize }} onClick={action} className={size}>
       {text}
     </button>
   );
