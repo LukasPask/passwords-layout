@@ -12,8 +12,8 @@
       padding: 9rem 3.125rem 3.125rem 4.375rem;
     }
     @media screen and (max-width: 768px) {
-      padding: 6rem 3rem 1rem 3rem;
       flex-direction: column;
+      padding: 6rem 3rem 1rem 3rem;
     }
   }
   // Left side of hero section
@@ -22,8 +22,8 @@
     padding-bottom: 6.25rem;
     @media screen and (max-width: 768px) {
       align-items: center;
-      text-align: center;
       padding-bottom: 3rem;
+      text-align: center;
     }
   }
   // Left side text of hero section

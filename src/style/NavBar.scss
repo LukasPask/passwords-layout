@@ -6,8 +6,8 @@
   @media screen and (max-width: 900px) {
     background-color: base.$grey-color;
     padding: 2rem;
-    width: 100%;
     overflow: hidden;
+    width: 100%;
     // Navigation animation (used when window is smaller than 900xp)
     animation: fadeIn 0.3s;
   }

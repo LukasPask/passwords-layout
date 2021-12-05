@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 
 // Logic (custom hooks)
 import useFetch from '../hooks/useFetch';
-// Data
-import { FAQData } from '../data/Data';
 
 const HomePageLogic = ({ render }) => {
   //  --- Custom hooks
@@ -20,22 +18,20 @@ const HomePageLogic = ({ render }) => {
   const [showAllButtonText, setShowAllButtonText] = useState('Show all (50)');
   // for sorting passwords by filter
   const [sortedPassword, setSortedPassword] = useState([]);
-  // For showing and hiding FAQ content default value is the first FAQ
-  const [showText, setShowText] = useState(FAQData[0].title);
   //  --- Ref
-  const passwordFilter = useRef(true);
+  const passwordFilter = useRef('Count');
   //  --- Side effects
   useEffect(() => {
     // Trigger this sorting only if data from API is got
     if (!isLoading) {
       // If passwordFilter = true then filter data by count
-      if (passwordFilter.current) {
+      if (passwordFilter.current === 'Count') {
         setSortedPassword(
           passwords.passwords.sort((a, b) => {
             return b.count - a.count;
           })
         );
-      } else if (!passwordFilter.current) {
+      } else if (passwordFilter.current === 'ABC') {
         // If passwordFilter = false then filter data by count
         setSortedPassword(
           passwords.passwords.sort((a, b) => {
@@ -54,23 +50,27 @@ const HomePageLogic = ({ render }) => {
     setSortedPassword([]);
     // filter by count makes passwordFilter true which triggers useEffect to sort it
     if (e.target.value === 'Count') {
-      passwordFilter.current = true;
+      passwordFilter.current = 'Count';
     }
     // filter Alphabetically makes passwordFilter false which triggers useEffect to sort it
     else if (e.target.value === 'ABC') {
-      passwordFilter.current = false;
+      passwordFilter.current = 'ABC';
     }
   };
 
   const showAllPasswords = () => {
     // By default showAll is 10 so when the button is clicked it triggers to change the showAll state to 50 and shows all passwords, also changes button text
     if (showAll === 10) {
+      // Sets button (under the passwords section) text to 'Show less'
       setShowAllButtonText('Show less');
+      // Sets the count of the passwords to 50
       setShowAll(50);
     }
     // after button is clicked when all data is shown the showAll and showButtonText states values will be set to default
     if (showAll === 50) {
+      // Sets button (under the passwords section) text to 'Show all (50)'
       setShowAllButtonText('Show all (50)');
+      // Sets the count of the passwords to 10
       setShowAll(10);
       // If the user wants to see less passwords then scroll to passwords (user would be scrolled back where he left (if not used after pressing user will see FAQ section))
       window.scrollTo(0, 700);
@@ -88,9 +88,6 @@ const HomePageLogic = ({ render }) => {
     // for sorting passwords by filter
     sortedPassword,
     setSortedPassword,
-    // For showing and hiding FAQ content default value is the first FAQ
-    showText,
-    setShowText,
     // Custom functions
     sortHandler,
     showAllPasswords,

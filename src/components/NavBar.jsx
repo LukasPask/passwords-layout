@@ -18,11 +18,7 @@ const NavBar = () => {
           </li>
         ))}
         <li className='nav__item'>
-          <Button
-            text='Open Vault'
-            action={() => console.log('Vault is open')}
-            size='smallest-btn'
-          />
+          <Button text='Open Vault' size='smallest-btn' />
         </li>
       </ul>
     </nav>

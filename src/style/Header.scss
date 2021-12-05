@@ -48,24 +48,23 @@
 .hamburger {
   @media screen and (min-width: 900px) {
     display: none;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .hamburger .hamburger__line {
-  width: 1.563rem;
-  height: 0.156rem;
   background-color: base.$secondary-color;
   display: block;
+  height: 0.156rem;
   margin: 0.25rem auto;
+  width: 1.563rem;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-.hamburger:hover {
-  cursor: pointer;
-}
-
-.is-active .hamburger__line:nth-child(2) {
+.hamburger .is-active .hamburger__line:nth-child(2) {
   opacity: 0;
 }
 

@@ -32,7 +32,7 @@ const FAQSection = ({ headText, data, icon }) => {
 
 FAQSection.propTypes = {
   headText: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   icon: PropTypes.node.isRequired,
 };
 

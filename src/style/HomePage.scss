@@ -41,8 +41,8 @@
 // Password list
 .password {
   @extend %d-flex-collumn;
-  max-width: 1200px;
   counter-reset: section;
+  max-width: 1200px;
   // Loading and error text
   &__text {
     text-align: center;
@@ -53,8 +53,8 @@
     border-top: 1px solid #e8e8e9;
     padding: 1.5rem 0 1.5rem 0;
     &::before {
-      counter-increment: section;
       content: counter(section) '.  ';
+      counter-increment: section;
     }
     &:last-child {
       border-bottom: 1px solid #e8e8e9;
@@ -72,8 +72,8 @@
   // Button (show more (50) show less) wrapper
   &__buttonWrapper {
     padding: 3.125rem 0 0 0;
-    text-align: center;
     padding-bottom: 6rem;
+    text-align: center;
     @media screen and (max-width: 768px) {
       padding: 2rem 0;
     }

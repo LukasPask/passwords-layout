@@ -12,7 +12,7 @@ const Section = ({ headText, children }) => {
   );
 };
 Section.propTypes = {
-  headText: PropTypes.string,
+  headText: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 

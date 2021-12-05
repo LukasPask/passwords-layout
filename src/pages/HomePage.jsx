@@ -1,7 +1,7 @@
 import React from 'react';
 // Components
 import HeroSection from '../components/HeroSection';
-import Section from '../components/Section';
+import CustomSection from '../components/CustomSection';
 import FAQSection from '../components/FAQSection';
 import Button from '../components/Button';
 // Icons
@@ -27,9 +27,6 @@ const HomePage = () => {
         // for sorting passwords by filter
         sortedPassword,
         setSortedPassword,
-        // For showing and hiding FAQ content default value is the first FAQ
-        showText,
-        setShowText,
         // Custom functions
         sortHandler,
         showAllPasswords,
@@ -40,7 +37,7 @@ const HomePage = () => {
       ) => (
         <>
           <HeroSection />
-          <Section headText='Top leaked passwords'>
+          <CustomSection headText='Top leaked passwords'>
             <div className='passwordsFilter'>
               <h6 className='passwordsFilter__name'>Password</h6>
               <select
@@ -79,7 +76,7 @@ const HomePage = () => {
                 size='small-btn'
               />
             </div>
-          </Section>
+          </CustomSection>
           <FAQSection
             headText='Frequently asked questions'
             data={FAQData}

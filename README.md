@@ -19,5 +19,5 @@ You will also see any lint errors in the console.
 ## Installed Dependencies
 
 - Axios (For fetching data from API)
-- Prop-Types (For defining component props and default props)
+- Prop-Types (For defining component prop types and default prop values)
 - React-icons (For adding custom icons from [https://react-icons.github.io/react-icons])
